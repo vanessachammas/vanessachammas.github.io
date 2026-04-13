@@ -2,11 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const page = location.pathname.split("/").pop() || "index.html";
     const links = [
         ["index.html", "Home"],
-        ["about.html", "About"],
+        ["spotify.html", "Spotify Stats"],
+        ["wfh-tracker.html", "WFH Tracker"],
+        ["books.html", "Books"],
         ["projects.html", "Projects"],
         ["blog.html", "Blog"],
-        ["books.html", "Books"],
-        ["good-words.html", "Good Words"],
+        
     ];
 
     const nav = links

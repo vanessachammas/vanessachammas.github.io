@@ -175,3 +175,391 @@ article time {
     color: #888;
     margin-bottom: 0.5rem;
 }
+
+/* WFH Tracker */
+
+.wfh-summary {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.wfh-stat-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.wfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.wfh-stat-num {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.wfh-stat-warn {
+    color: #c0392b;
+}
+
+.wfh-stat-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: lowercase;
+    letter-spacing: 0.03em;
+}
+
+.wfh-window-note {
+    font-size: 0.75rem;
+    color: #aaa;
+    text-align: center;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+.wfh-weeks {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 1.25rem;
+}
+
+.wfh-grid-header,
+.wfh-week-row {
+    display: grid;
+    grid-template-columns: 3.5rem repeat(5, 1fr) 3rem;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0;
+}
+
+.wfh-grid-header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
+}
+
+.wfh-day-header {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.wfh-week-label {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.wfh-day {
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    color: #ccc;
+    user-select: none;
+    transition: background 0.15s;
+}
+
+.wfh-day:hover {
+    background: #f0f0f0;
+}
+
+.wfh-day.wfh-in-office {
+    color: #333;
+}
+
+.wfh-day.wfh-future {
+    opacity: 0.4;
+}
+
+.wfh-week-status {
+    font-size: 0.75rem;
+    text-align: right;
+    color: #aaa;
+}
+
+.wfh-status-met {
+    color: #333;
+    font-weight: 600;
+}
+
+.wfh-status-miss {
+    color: #c0392b;
+}
+
+.wfh-week-row.wfh-current {
+    background: #fafafa;
+    border-radius: 4px;
+}
+
+.wfh-week-row.wfh-met .wfh-week-label {
+    color: #333;
+}
+
+/* Spotify */
+
+.spotify-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.spotify-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.spotify-header h2 {
+    margin-bottom: 0;
+}
+
+.spotify-range-toggle {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.spotify-range {
+    background: none;
+    border: 1px solid #e0e0e0;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    color: #888;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: inherit;
+}
+
+.spotify-range:hover {
+    color: #333;
+}
+
+.spotify-range.active {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.spotify-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 3px;
+}
+
+.spotify-btn:hover {
+    background: #555;
+}
+
+.spotify-btn-small {
+    background: none;
+    color: #aaa;
+    border: 1px solid #e0e0e0;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+}
+
+.spotify-btn-small:hover {
+    color: #333;
+    background: none;
+}
+
+.spotify-muted {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+.spotify-np {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spotify-np-art {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.spotify-np-track {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.spotify-np-artist {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.spotify-np-album {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.spotify-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    counter-reset: none;
+}
+
+.spotify-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+}
+
+.spotify-rank {
+    width: 1.5rem;
+    font-size: 0.8rem;
+    color: #aaa;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.spotify-item-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.spotify-item-name {
+    font-size: 0.9rem;
+}
+
+.spotify-item-sub {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Spotify tabs */
+
+.sp-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.sp-tab {
+    background: none;
+    border: 1px solid #e0e0e0;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    color: #888;
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: inherit;
+    transition: all 0.15s;
+}
+
+.sp-tab:hover {
+    color: #333;
+}
+
+.sp-tab.active {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+/* Podium */
+
+.sp-podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 1rem 0 1.5rem;
+}
+
+.sp-podium-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+}
+
+.sp-podium-first {
+    order: 0;
+}
+
+.sp-podium-item:nth-child(1) { order: 1; }
+.sp-podium-item:nth-child(2) { order: 0; }
+.sp-podium-item:nth-child(3) { order: 2; }
+
+.sp-podium-rank {
+    font-size: 0.7rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.sp-podium-first .sp-podium-rank {
+    color: #333;
+    font-size: 0.8rem;
+}
+
+.sp-podium-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.sp-podium-img:hover {
+    transform: scale(1.08);
+}
+
+.sp-podium-img-first {
+    width: 96px;
+    height: 96px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.sp-podium-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.sp-podium-first .sp-podium-name {
+    font-size: 0.95rem;
+}
+
+.sp-podium-sub {
+    font-size: 0.7rem;
+    color: #888;
+    margin-top: 0.15rem;
+}
+
+.sp-rest-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1rem;
+}

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="sidebar.js"></script>
+</head>
+<body>
+    <div class="layout">
+        <div class="sidebar"></div>
+        <main>
+            <div id="spotify-mode-bar" class="spotify-section">
+                <h2 id="spotify-mode-heading">Vanessa's Stats</h2>
+                <p id="spotify-mode-text" class="spotify-muted">Connect to see your own.</p>
+                <button class="spotify-btn spotify-btn-small" id="spotify-connect">Connect Spotify</button>
+                <button class="spotify-btn spotify-btn-small" id="spotify-disconnect" style="display:none;">Disconnect</button>
+            </div>
+
+            <div id="spotify-content" style="display:none;">
+                <div class="spotify-section">
+                    <h2>Top Artists</h2>
+                    <div class="sp-tabs" id="artist-tabs">
+                        <button class="sp-tab active" data-range="short_term">Past Month</button>
+                        <button class="sp-tab" data-range="medium_term">6 Months</button>
+                        <button class="sp-tab" data-range="long_term">All Time</button>
+                    </div>
+                    <ol id="spotify-list-artists" class="spotify-list"></ol>
+                </div>
+
+                <div class="spotify-section">
+                    <h2>Top Tracks</h2>
+                    <div class="sp-tabs" id="track-tabs">
+                        <button class="sp-tab active" data-range="short_term">Past Month</button>
+                        <button class="sp-tab" data-range="medium_term">6 Months</button>
+                        <button class="sp-tab" data-range="long_term">All Time</button>
+                    </div>
+                    <ol id="spotify-list-tracks" class="spotify-list"></ol>
+                </div>
+
+                <p class="spotify-muted" style="margin-top:1rem;">
+                    <span id="spotify-updated" class="spotify-muted"></span>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    (function () {
+        const CLIENT_ID = '1bfc6a0cc6fb46189fa163bf12407c11';
+        const REDIRECT_URI = window.location.href.split('?')[0].split('#')[0];
+        const SCOPES = 'user-top-read user-read-recently-played user-read-currently-playing';
+
+        const TOKEN_KEY = 'spotify_token';
+        const REFRESH_KEY = 'spotify_refresh_token';
+        const EXPIRY_KEY = 'spotify_token_expiry';
+        const VERIFIER_KEY = 'spotify_code_verifier';
+
+        let isLive = false;
+
+        // ── PKCE helpers ───────────────────────────────────────
+        function generateRandomString(length) {
+            const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const values = crypto.getRandomValues(new Uint8Array(length));
+            return Array.from(values, v => possible[v % possible.length]).join('');
+        }
+
+        async function sha256(plain) {
+            const data = new TextEncoder().encode(plain);
+            return crypto.subtle.digest('SHA-256', data);
+        }
+
+        function base64urlencode(buffer) {
+            return btoa(String.fromCharCode(...new Uint8Array(buffer)))
+                .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        }
+
+        async function generateCodeChallenge(verifier) {
+            const hashed = await sha256(verifier);
+            return base64urlencode(hashed);
+        }
+
+        // ── Auth ───────────────────────────────────────────────
+        async function redirectToSpotify() {
+            const verifier = generateRandomString(128);
+            const challenge = await generateCodeChallenge(verifier);
+            localStorage.setItem(VERIFIER_KEY, verifier);
+            const params = new URLSearchParams({
+                client_id: CLIENT_ID, response_type: 'code', redirect_uri: REDIRECT_URI,
+                scope: SCOPES, code_challenge_method: 'S256', code_challenge: challenge,
+            });
+            window.location = 'https://accounts.spotify.com/authorize?' + params.toString();
+        }
+
+        async function exchangeCode(code) {
+            const verifier = localStorage.getItem(VERIFIER_KEY);
+            const resp = await fetch('https://accounts.spotify.com/api/token', {
+                method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    client_id: CLIENT_ID, grant_type: 'authorization_code',
+                    code, redirect_uri: REDIRECT_URI, code_verifier: verifier,
+                }),
+            });
+            const data = await resp.json();
+            if (data.access_token) saveTokens(data);
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        async function refreshTokenFlow() {
+            const rt = localStorage.getItem(REFRESH_KEY);
+            if (!rt) return false;
+            const resp = await fetch('https://accounts.spotify.com/api/token', {
+                method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ client_id: CLIENT_ID, grant_type: 'refresh_token', refresh_token: rt }),
+            });
+            const data = await resp.json();
+            if (data.access_token) { saveTokens(data); return true; }
+            return false;
+        }
+
+        function saveTokens(data) {
+            localStorage.setItem(TOKEN_KEY, data.access_token);
+            if (data.refresh_token) localStorage.setItem(REFRESH_KEY, data.refresh_token);
+            localStorage.setItem(EXPIRY_KEY, Date.now() + data.expires_in * 1000);
+        }
+
+        function getToken() {
+            const expiry = parseInt(localStorage.getItem(EXPIRY_KEY) || '0');
+            if (Date.now() > expiry) return null;
+            return localStorage.getItem(TOKEN_KEY);
+        }
+
+        function logout() {
+            localStorage.removeItem(TOKEN_KEY);
+            localStorage.removeItem(REFRESH_KEY);
+            localStorage.removeItem(EXPIRY_KEY);
+            localStorage.removeItem(VERIFIER_KEY);
+            window.location.reload();
+        }
+
+        // ── API ────────────────────────────────────────────────
+        async function api(path) {
+            let token = getToken();
+            if (!token) {
+                const ok = await refreshTokenFlow();
+                if (!ok) { logout(); return null; }
+                token = getToken();
+            }
+            const resp = await fetch('https://api.spotify.com/v1' + path, {
+                headers: { Authorization: 'Bearer ' + token },
+            });
+            if (resp.status === 401) {
+                const ok = await refreshTokenFlow();
+                if (!ok) { logout(); return null; }
+                return api(path);
+            }
+            if (!resp.ok) return null;
+            return resp.json();
+        }
+
+        // ── Helpers ────────────────────────────────────────────
+        function getImg(item) {
+            if (item.images) return (item.images[1] || item.images[0] || {}).url || item.image;
+            if (item.album) return (item.album.images[1] || item.album.images[0] || {}).url;
+            return item.image;
+        }
+
+        function getSmallImg(item) {
+            if (item.images) return (item.images[2] || item.images[0] || {}).url || item.image;
+            if (item.album) return (item.album.images[2] || item.album.images[0] || {}).url;
+            return item.image;
+        }
+
+        function getArtists(item) {
+            if (!item.artists) return '';
+            if (typeof item.artists === 'string') return item.artists;
+            if (Array.isArray(item.artists)) return item.artists.map(a => typeof a === 'string' ? a : a.name).join(', ');
+            return '';
+        }
+
+        function timeAgo(date) {
+            const mins = Math.floor((Date.now() - date.getTime()) / 60000);
+            if (mins < 1) return 'just now';
+            if (mins < 60) return mins + 'm ago';
+            const hrs = Math.floor(mins / 60);
+            if (hrs < 24) return hrs + 'h ago';
+            return Math.floor(hrs / 24) + 'd ago';
+        }
+
+        function normalize(data) {
+            return data ? (data.items || data) : [];
+        }
+
+        // ── Rendering ──────────────────────────────────────────
+        function renderNowPlaying(data) {
+            const el = document.getElementById('spotify-now-playing');
+            if (!data || !data.item) {
+                el.innerHTML = '<p class="spotify-muted">Nothing playing right now.</p>';
+                return;
+            }
+            const t = data.item;
+            const img = getImg(t);
+            el.innerHTML = '<div class="spotify-np">' +
+                '<img src="' + img + '" alt="" class="spotify-np-art">' +
+                '<div>' +
+                '<div class="spotify-np-track">' + t.name + '</div>' +
+                '<div class="spotify-np-artist">' + t.artists.map(a => a.name).join(', ') + '</div>' +
+                '<div class="spotify-np-album">' + t.album.name + '</div>' +
+                '</div></div>';
+        }
+
+        function renderList(items, el, showArtists) {
+            if (!items.length) {
+                el.innerHTML = '<li class="spotify-muted">No data yet.</li>';
+                return;
+            }
+
+            el.innerHTML = items.slice(0, 10).map(function(a, i) {
+                var img = getSmallImg(a);
+                var sub = showArtists ? '<span class="spotify-item-sub">' + getArtists(a) + '</span>' : '';
+                var nameWrap = showArtists
+                    ? '<div><span class="spotify-item-name">' + a.name + '</span>' + sub + '</div>'
+                    : '<span class="spotify-item-name">' + a.name + '</span>';
+                return '<li class="spotify-item">' +
+                    '<span class="spotify-rank">' + (i + 1) + '</span>' +
+                    (img ? '<img src="' + img + '" alt="" class="spotify-item-img">' : '') +
+                    nameWrap +
+                '</li>';
+            }).join('');
+        }
+
+        function renderPodiumArtists(data) {
+            renderList(normalize(data),
+                document.getElementById('spotify-list-artists'),
+                false);
+        }
+
+        function renderPodiumTracks(data) {
+            renderList(normalize(data),
+                document.getElementById('spotify-list-tracks'),
+                true);
+        }
+
+        function renderRecent(data) {
+            var el = document.getElementById('spotify-recent');
+            var items = normalize(data);
+            if (!items.length) {
+                el.innerHTML = '<li class="spotify-muted">No data yet.</li>';
+                return;
+            }
+            el.innerHTML = items.slice(0, 10).map(function(item) {
+                var t = item.track || item;
+                var img = getSmallImg(t);
+                var artists = getArtists(t);
+                var ago = item.played_at ? timeAgo(new Date(item.played_at)) : '';
+                return '<li class="spotify-item">' +
+                    (img ? '<img src="' + img + '" alt="" class="spotify-item-img">' : '') +
+                    '<div>' +
+                    '<span class="spotify-item-name">' + t.name + '</span>' +
+                    '<span class="spotify-item-sub">' + artists + (ago ? ' \u00b7 ' + ago : '') + '</span>' +
+                    '</div></li>';
+            }).join('');
+        }
+
+        // ── Tabs ───────────────────────────────────────────────
+        var artistRange = 'short_term';
+        var trackRange = 'short_term';
+        var staticData = null;
+
+        function setupTabs() {
+            document.getElementById('artist-tabs').addEventListener('click', async function(e) {
+                var btn = e.target.closest('.sp-tab');
+                if (!btn) return;
+                document.querySelectorAll('#artist-tabs .sp-tab').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                artistRange = btn.dataset.range;
+                if (isLive) {
+                    renderPodiumArtists(await api('/me/top/artists?limit=10&time_range=' + artistRange));
+                } else if (staticData) {
+                    renderPodiumArtists(staticData.top_artists[artistRange] || []);
+                }
+            });
+
+            document.getElementById('track-tabs').addEventListener('click', async function(e) {
+                var btn = e.target.closest('.sp-tab');
+                if (!btn) return;
+                document.querySelectorAll('#track-tabs .sp-tab').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                trackRange = btn.dataset.range;
+                if (isLive) {
+                    renderPodiumTracks(await api('/me/top/tracks?limit=10&time_range=' + trackRange));
+                } else if (staticData) {
+                    renderPodiumTracks(staticData.top_tracks[trackRange] || []);
+                }
+            });
+        }
+
+        // ── Static data ────────────────────────────────────────
+        async function loadStaticData() {
+            try {
+                var resp = await fetch('spotify-data.json');
+                if (!resp.ok) return null;
+                return resp.json();
+            } catch(e) { return null; }
+        }
+
+        function renderStatic(data) {
+            staticData = data;
+            document.getElementById('spotify-content').style.display = 'block';
+            renderPodiumArtists(data.top_artists[artistRange] || []);
+            renderPodiumTracks(data.top_tracks[trackRange] || []);
+            if (data.updated) {
+                document.getElementById('spotify-updated').textContent =
+                    'Last updated ' + new Date(data.updated).toLocaleDateString();
+            }
+        }
+
+        function updateModeUI(live) {
+            var heading = document.getElementById('spotify-mode-heading');
+            var text = document.getElementById('spotify-mode-text');
+            var connectBtn = document.getElementById('spotify-connect');
+            var disconnectBtn = document.getElementById('spotify-disconnect');
+            if (live) {
+                heading.textContent = 'Your Stats';
+                text.textContent = '';
+                connectBtn.style.display = 'none';
+                disconnectBtn.style.display = '';
+            } else {
+                heading.textContent = "Spotify Stats";
+                text.textContent = 'These stats are pregenerated with my data. Connect to see your own.';
+                connectBtn.style.display = '';
+                disconnectBtn.style.display = 'none';
+            }
+        }
+
+        // ── Init ───────────────────────────────────────────────
+        async function init() {
+            var params = new URLSearchParams(window.location.search);
+            var code = params.get('code');
+            if (code) await exchangeCode(code);
+
+            var token = getToken();
+            if (!token) {
+                var ok = await refreshTokenFlow();
+                if (ok) token = getToken();
+            }
+
+            setupTabs();
+
+            if (token) {
+                isLive = true;
+                updateModeUI(true);
+                document.getElementById('spotify-content').style.display = 'block';
+
+                var results = await Promise.all([
+                    api('/me/top/artists?limit=10&time_range=' + artistRange),
+                    api('/me/top/tracks?limit=10&time_range=' + trackRange),
+                ]);
+
+                renderPodiumArtists(results[0]);
+                renderPodiumTracks(results[1]);
+                document.getElementById('spotify-updated').textContent = '';
+            } else {
+                isLive = false;
+                updateModeUI(false);
+                var data = await loadStaticData();
+                if (data) {
+                    renderStatic(data);
+                } else {
+                    document.getElementById('spotify-content').style.display = 'block';
+                    document.getElementById('spotify-list-artists').innerHTML =
+                        '<li class="spotify-muted">No data yet. Run export-spotify.py to generate.</li>';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('spotify-connect').addEventListener('click', redirectToSpotify);
+            document.getElementById('spotify-disconnect').addEventListener('click', logout);
+            init();
+        });
+    })();
+    </script>
+</body>
+</html>

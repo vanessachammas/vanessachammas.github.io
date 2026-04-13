@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WFH Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="sidebar.js"></script>
+</head>
+<body>
+    <div class="layout">
+        <div class="sidebar"></div>
+        <main>
+            <h1>WFH Tracker</h1>
+            <p>Track in-office days. Need 3 days/week in office, 8 out of every 12 weeks.</p>
+
+            <div class="wfh-summary" id="wfh-summary"></div>
+
+            <div class="wfh-weeks" id="wfh-weeks"></div>
+        </main>
+    </div>
+
+    <script>
+    (function () {
+        const STORAGE_KEY = 'wfh-tracker-days';
+        const DAYS_REQUIRED = 3;
+        const WEEKS_REQUIRED = 8;
+        const WINDOW = 12;
+        const DAY_NAMES = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+
+        function getMonday(d) {
+            const date = new Date(d);
+            const day = date.getDay();
+            const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+            date.setDate(diff);
+            date.setHours(0, 0, 0, 0);
+            return date;
+        }
+
+        function fmt(d) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            return `${y}-${m}-${dd}`;
+        }
+
+        function fmtShort(d) {
+            return `${d.getMonth() + 1}/${d.getDate()}`;
+        }
+
+        function load() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+            } catch {
+                return {};
+            }
+        }
+
+        function save(days) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(days));
+        }
+
+        function seed() {
+            const days = load();
+            if (Object.keys(days).length > 0) return days;
+
+            // Seed: Jan 19 through Mar 30 2026, Mon-Wed each week (in office)
+            // Apr 6 week left empty (WFH)
+            const seedStart = new Date(2026, 0, 19); // Jan 19
+            const seedEnd = new Date(2026, 2, 30);   // Mar 30
+            const monday = new Date(seedStart);
+            while (monday <= seedEnd) {
+                for (let i = 0; i < 3; i++) {
+                    const day = new Date(monday);
+                    day.setDate(day.getDate() + i);
+                    days[fmt(day)] = true;
+                }
+                monday.setDate(monday.getDate() + 7);
+            }
+
+            save(days);
+            return days;
+        }
+
+        function countOfficeDays(days, monday) {
+            let count = 0;
+            for (let i = 0; i < 5; i++) {
+                const d = new Date(monday);
+                d.setDate(d.getDate() + i);
+                if (days[fmt(d)]) count++;
+            }
+            return count;
+        }
+
+        function render() {
+            const days = seed();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const currentMonday = getMonday(today);
+
+            // Build week list: 12 past weeks + current week
+            const weeks = [];
+            for (let i = WINDOW; i >= 0; i--) {
+                const mon = new Date(currentMonday);
+                mon.setDate(mon.getDate() - i * 7);
+                weeks.push(mon);
+            }
+
+            // Stats from last 12 completed weeks (exclude current week)
+            let inOfficeWeeks = 0;
+            for (let i = WINDOW; i >= 1; i--) {
+                const mon = new Date(currentMonday);
+                mon.setDate(mon.getDate() - i * 7);
+                if (countOfficeDays(days, mon) >= DAYS_REQUIRED) inOfficeWeeks++;
+            }
+
+            const wfhUsed = WINDOW - inOfficeWeeks;
+            const wfhMax = WINDOW - WEEKS_REQUIRED;
+            const wfhRemaining = Math.max(0, wfhMax - wfhUsed);
+            const onTrack = inOfficeWeeks >= WEEKS_REQUIRED;
+
+            // Summary
+            const summaryEl = document.getElementById('wfh-summary');
+            summaryEl.innerHTML = `
+                <div class="wfh-stat-row">
+                    <div class="wfh-stat">
+                        <span class="wfh-stat-num ${onTrack ? '' : 'wfh-stat-warn'}">${inOfficeWeeks}/${WEEKS_REQUIRED}</span>
+                        <span class="wfh-stat-label">weeks in office</span>
+                    </div>
+                    <div class="wfh-stat">
+                        <span class="wfh-stat-num">${wfhUsed}/${wfhMax}</span>
+                        <span class="wfh-stat-label">WFH weeks used</span>
+                    </div>
+                    <div class="wfh-stat">
+                        <span class="wfh-stat-num ${wfhRemaining === 0 ? 'wfh-stat-warn' : ''}">${wfhRemaining}</span>
+                        <span class="wfh-stat-label">WFH weeks left</span>
+                    </div>
+                </div>
+                <p class="wfh-window-note">Rolling 12-week window ending ${fmtShort(new Date(currentMonday.getTime() - 7))}.</p>
+            `;
+
+            // Weeks grid
+            const weeksEl = document.getElementById('wfh-weeks');
+            let html = '<div class="wfh-grid-header"><span class="wfh-week-label">Week</span>';
+            DAY_NAMES.forEach(d => { html += `<span class="wfh-day-header">${d}</span>`; });
+            html += '<span class="wfh-week-status">Days</span></div>';
+
+            weeks.forEach(monday => {
+                const isCurrent = monday.getTime() === currentMonday.getTime();
+                const officeDays = countOfficeDays(days, monday);
+                const met = officeDays >= DAYS_REQUIRED;
+                const friday = new Date(monday);
+                friday.setDate(friday.getDate() + 4);
+
+                html += `<div class="wfh-week-row ${isCurrent ? 'wfh-current' : ''} ${met ? 'wfh-met' : ''}">`;
+                html += `<span class="wfh-week-label">${fmtShort(monday)}</span>`;
+
+                for (let i = 0; i < 5; i++) {
+                    const d = new Date(monday);
+                    d.setDate(d.getDate() + i);
+                    const key = fmt(d);
+                    const checked = days[key] ? true : false;
+                    const isPast = d <= today;
+                    const isFuture = d > today;
+
+                    html += `<span class="wfh-day ${checked ? 'wfh-in-office' : ''} ${isFuture ? 'wfh-future' : ''}" data-date="${key}">${checked ? '●' : '○'}</span>`;
+                }
+
+                html += `<span class="wfh-week-status ${met ? 'wfh-status-met' : 'wfh-status-miss'}">${officeDays}${met ? ' ✓' : ''}</span>`;
+                html += '</div>';
+            });
+
+            weeksEl.innerHTML = html;
+
+            // Click handlers
+            weeksEl.querySelectorAll('.wfh-day').forEach(el => {
+                el.addEventListener('click', function () {
+                    const key = this.dataset.date;
+                    const days = load();
+                    if (days[key]) {
+                        delete days[key];
+                    } else {
+                        days[key] = true;
+                    }
+                    save(days);
+                    render();
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', render);
+    })();
+    </script>
+</body>
+</html>
