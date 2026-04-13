@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    text-align: center;
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.sidebar-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 1rem;
+}
+
+.description {
+    font-size: 0.85rem;
+    color: #666;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.75rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+nav a {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    padding: 0.2rem 0;
+}
+
+nav a:hover,
+nav a.active {
+    color: #333;
+}
+
+main {
+    flex: 1;
+    padding: 2rem 3rem;
+    max-width: 700px;
+}
+
+main h1 {
+    margin-bottom: 1rem;
+}
+
+main p {
+    margin-bottom: 1rem;
+}
+
+.book-tracker {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.book-tracker h2 {
+    margin-bottom: 0.25rem;
+}
+
+.book-tracker p {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chart-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.chart-label {
+    width: 2rem;
+    font-size: 0.8rem;
+    color: #888;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.chart-bar-bg {
+    flex: 1;
+    height: 18px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.chart-bar {
+    height: 100%;
+    background: #333;
+    border-radius: 3px;
+    min-width: 0;
+    transition: width 0.3s ease;
+}
+
+.chart-count {
+    width: 1.5rem;
+    font-size: 0.8rem;
+    color: #555;
+    flex-shrink: 0;
+}
+
+.book-tracker ul {
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+ul h2 {
+    margin-bottom: 0.25rem;
+}
+
+article {
+    margin-bottom: 2rem;
+}
+
+article time {
+    display: block;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
