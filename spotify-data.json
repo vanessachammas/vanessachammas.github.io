@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-13T16:27:23Z",
+  "updated": "2026-04-14T13:16:45Z",
   "top_artists": {
     "short_term": [
       {
@@ -15,8 +15,8 @@
         "image": "https://i.scdn.co/image/ab6761610000f178b99cacf8acd5378206767261"
       },
       {
-        "name": "070 Shake",
-        "image": "https://i.scdn.co/image/ab6761610000f1786338990250f5d5a447650ba9"
+        "name": "Blood Orange",
+        "image": "https://i.scdn.co/image/ab6761610000f17882a833d61eafc09c05c24882"
       },
       {
         "name": "Taylor Swift",
@@ -27,20 +27,20 @@
         "image": "https://i.scdn.co/image/ab6761610000f178df0b5ac84376a0a4b2166816"
       },
       {
-        "name": "Blood Orange",
-        "image": "https://i.scdn.co/image/ab6761610000f17882a833d61eafc09c05c24882"
-      },
-      {
         "name": "The Strokes",
         "image": "https://i.scdn.co/image/ab6761610000f178c3b137793230f4043feb0089"
       },
       {
-        "name": "Foster The People",
-        "image": "https://i.scdn.co/image/ab6761610000f17822b8e662f0cfdddac8ab22bb"
+        "name": "070 Shake",
+        "image": "https://i.scdn.co/image/ab6761610000f1786338990250f5d5a447650ba9"
       },
       {
-        "name": "Weston Estate",
-        "image": "https://i.scdn.co/image/ab6761610000f178f49ff1ff97d91c96c9fb2323"
+        "name": "Coldplay",
+        "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
+      },
+      {
+        "name": "Foster The People",
+        "image": "https://i.scdn.co/image/ab6761610000f17822b8e662f0cfdddac8ab22bb"
       }
     ],
     "medium_term": [
@@ -81,8 +81,8 @@
         "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
       },
       {
-        "name": "Kavinsky",
-        "image": "https://i.scdn.co/image/ab6761610000f1782dc7b3180bad1885c6ee1320"
+        "name": "Drake",
+        "image": "https://i.scdn.co/image/ab6761610000f1784293385d324db8558179afd9"
       }
     ],
     "long_term": [
@@ -146,6 +146,11 @@
         "image": "https://i.scdn.co/image/ab67616d00004851d647cc15dab68402fcd5f91d"
       },
       {
+        "name": "Time To Pretend",
+        "artists": "MGMT",
+        "image": "https://i.scdn.co/image/ab67616d000048517addf1f64798c10d3bd6b27c"
+      },
+      {
         "name": "We Don't Talk Anymore (feat. Selena Gomez)",
         "artists": "Charlie Puth, Selena Gomez",
         "image": "https://i.scdn.co/image/ab67616d0000485115145482a542a9adb282250b"
@@ -166,19 +171,14 @@
         "image": "https://i.scdn.co/image/ab67616d0000485104481c826dd292e5e4983b3f"
       },
       {
+        "name": "Jesus Freak Lighter",
+        "artists": "Blood Orange",
+        "image": "https://i.scdn.co/image/ab67616d00004851a57614c31da9d22c4a5a082d"
+      },
+      {
         "name": "That Should Be Me",
         "artists": "Justin Bieber",
         "image": "https://i.scdn.co/image/ab67616d00004851629dc9e2e3bc20bbd7d92e4a"
-      },
-      {
-        "name": "Never Let You Go",
-        "artists": "Justin Bieber",
-        "image": "https://i.scdn.co/image/ab67616d00004851629dc9e2e3bc20bbd7d92e4a"
-      },
-      {
-        "name": "Time To Pretend",
-        "artists": "MGMT",
-        "image": "https://i.scdn.co/image/ab67616d000048517addf1f64798c10d3bd6b27c"
       }
     ],
     "medium_term": [
@@ -288,64 +288,64 @@
   },
   "recent": [
     {
-      "name": "King For A Day",
-      "artists": "Pierce The Veil, Kellin Quinn",
-      "image": "https://i.scdn.co/image/ab67616d00004851077cac00c2d9075e6f742570",
-      "played_at": "2026-04-13T02:52:01.152Z"
+      "name": "Intro",
+      "artists": "The xx",
+      "image": "https://i.scdn.co/image/ab67616d00004851a46d603701aa0342e8cca64e",
+      "played_at": "2026-04-14T07:39:55.771Z"
     },
     {
-      "name": "Moonlight",
-      "artists": "XXXTENTACION",
-      "image": "https://i.scdn.co/image/ab67616d00004851806c160566580d6335d1f16c",
-      "played_at": "2026-04-13T02:44:32.852Z"
+      "name": "Intro",
+      "artists": "The xx",
+      "image": "https://i.scdn.co/image/ab67616d00004851a46d603701aa0342e8cca64e",
+      "played_at": "2026-04-14T07:37:47.796Z"
     },
     {
-      "name": "STAY (with Justin Bieber)",
-      "artists": "The Kid LAROI, Justin Bieber",
-      "image": "https://i.scdn.co/image/ab67616d00004851aed1660585c1e3c9ffb50b6a",
-      "played_at": "2026-04-13T02:41:52.555Z"
+      "name": "Angel",
+      "artists": "Massive Attack, Horace Andy",
+      "image": "https://i.scdn.co/image/ab67616d000048512fcb0a3c7a66e516b11cd26e",
+      "played_at": "2026-04-14T07:31:37.747Z"
     },
     {
-      "name": "Voodoo",
-      "artists": "Gorgon City",
-      "image": "https://i.scdn.co/image/ab67616d000048513b30c1bbc9c7812b46a5d06c",
-      "played_at": "2026-04-13T02:39:42.637Z"
+      "name": "Escapism. - Sped Up",
+      "artists": "RAYE, 070 Shake",
+      "image": "https://i.scdn.co/image/ab67616d00004851e38f6d02f1e76fe09009e64e",
+      "played_at": "2026-04-14T03:08:07.067Z"
     },
     {
-      "name": "Jesus Freak Lighter",
-      "artists": "Blood Orange",
-      "image": "https://i.scdn.co/image/ab67616d00004851a57614c31da9d22c4a5a082d",
-      "played_at": "2026-04-12T19:13:34.254Z"
+      "name": "Don\u2019t Matter To Me (with Michael Jackson)",
+      "artists": "Drake, Michael Jackson",
+      "image": "https://i.scdn.co/image/ab67616d00004851f907de96b9a4fbc04accc0d5",
+      "played_at": "2026-04-14T03:04:06.672Z"
     },
     {
-      "name": "Never Let You Go",
-      "artists": "Justin Bieber",
-      "image": "https://i.scdn.co/image/ab67616d00004851629dc9e2e3bc20bbd7d92e4a",
-      "played_at": "2026-04-12T19:10:31.645Z"
+      "name": "Other People",
+      "artists": "Daniel Seavey",
+      "image": "https://i.scdn.co/image/ab67616d00004851ccd28623ec040b513ac45999",
+      "played_at": "2026-04-14T02:57:47.171Z"
     },
     {
-      "name": "Down To Earth",
-      "artists": "Justin Bieber",
-      "image": "https://i.scdn.co/image/ab67616d000048517c3bb9f74a98f60bdda6c9a7",
-      "played_at": "2026-04-12T17:43:41.671Z"
+      "name": "Viva La Vida",
+      "artists": "Coldplay",
+      "image": "https://i.scdn.co/image/ab67616d00004851e21cc1db05580b6f2d2a3b6e",
+      "played_at": "2026-04-14T02:53:48.285Z"
     },
     {
-      "name": "Private",
-      "artists": "The Neighbourhood",
-      "image": "https://i.scdn.co/image/ab67616d00004851e635293219bfb8618d310084",
-      "played_at": "2026-04-12T17:36:31.396Z"
+      "name": "Fix You",
+      "artists": "Coldplay",
+      "image": "https://i.scdn.co/image/ab67616d000048514e0362c225863f6ae2432651",
+      "played_at": "2026-04-14T02:49:44.568Z"
     },
     {
-      "name": "Haircut - From \"Mulan\"/Score",
-      "artists": "Jerry Goldsmith",
-      "image": "https://i.scdn.co/image/ab67616d000048513e59ff5f466b9a7e45d636b0",
-      "played_at": "2026-04-12T17:11:14.811Z"
+      "name": "The Scientist",
+      "artists": "Coldplay",
+      "image": "https://i.scdn.co/image/ab67616d00004851de09e02aa7febf30b7c02d82",
+      "played_at": "2026-04-14T02:44:50.033Z"
     },
     {
-      "name": "We Still Don't Trust You",
-      "artists": "Future, Metro Boomin, The Weeknd",
-      "image": "https://i.scdn.co/image/ab67616d00004851348af689eee674dec55c4086",
-      "played_at": "2026-04-12T17:01:16.329Z"
+      "name": "Time to Pretend",
+      "artists": "MGMT",
+      "image": "https://i.scdn.co/image/ab67616d000048518b32b139981e79f2ebe005eb",
+      "played_at": "2026-04-14T02:08:29.472Z"
     }
   ]
 }
