@@ -1,12 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // load sparkle cursor on every page
+    const sparkleScript = document.createElement("script");
+    sparkleScript.src = "sparkle.js";
+    document.head.appendChild(sparkleScript);
+
     const page = location.pathname.split("/").pop() || "index.html";
     const links = [
-        ["index.html", "Home"],
+        ["index.html", "Blog"],
         ["spotify.html", "Spotify Stats"],
         ["wfh-tracker.html", "WFH Tracker"],
         ["books.html", "Books"],
         ["projects.html", "Projects"],
-        ["blog.html", "Blog"],
         
     ];
 
@@ -22,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <img src="photos/fishies.jpg" alt="Avatar" class="avatar">
             <div class="sidebar-card">
                 <p class="description">go placidly.</p>
+                <p class="welcome">Hi, this is my personal site or blog. Its in progress..</p>
                 <nav>
                 ${nav}
                 </nav>
