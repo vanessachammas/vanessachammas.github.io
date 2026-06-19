@@ -56,6 +56,13 @@ body {
     margin-bottom: 0.75rem;
 }
 
+.welcome {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    margin-bottom: 0.75rem;
+}
+
 nav {
     display: flex;
     flex-direction: column;

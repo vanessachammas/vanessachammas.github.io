@@ -22,6 +22,7 @@ import os
 import sys
 
 CLIENT_ID = '1bfc6a0cc6fb46189fa163bf12407c11'
+CLIENT_SECRET = os.environ.get('SPOTIFY_CLIENT_SECRET', '')
 REDIRECT_PORT = 8888
 REDIRECT_URI = f'http://127.0.0.1:{REDIRECT_PORT}/callback'
 SCOPES = 'user-top-read user-read-recently-played user-read-currently-playing'
@@ -104,40 +105,84 @@ def authorize():
         sys.exit(1)
 
     # Exchange code for token
-    data = urllib.parse.urlencode({
-        'client_id': CLIENT_ID,
+    data_dict = {
         'grant_type': 'authorization_code',
         'code': auth_code,
         'redirect_uri': REDIRECT_URI,
         'code_verifier': verifier,
-    }).encode()
+    }
+    
+    if CLIENT_SECRET:
+        data_dict['client_id'] = CLIENT_ID
+    else:
+        data_dict['client_id'] = CLIENT_ID
+    
+    data = urllib.parse.urlencode(data_dict).encode()
+
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    
+    # Use Basic Authentication if client_secret is available
+    if CLIENT_SECRET:
+        credentials = base64.b64encode(f'{CLIENT_ID}:{CLIENT_SECRET}'.encode()).decode()
+        headers['Authorization'] = f'Basic {credentials}'
 
     req = urllib.request.Request(
         'https://accounts.spotify.com/api/token',
         data=data,
-        headers={'Content-Type': 'application/x-www-form-urlencoded'},
+        headers=headers,
     )
-    with urllib.request.urlopen(req) as resp:
-        token_data = json.loads(resp.read())
+    
+    try:
+        with urllib.request.urlopen(req) as resp:
+            token_data = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode()
+        print(f'Error exchanging code for token (HTTP {e.code}): {error_body}', file=sys.stderr)
+        raise
 
     save_token(token_data)
     return token_data['access_token']
 
 
 def refresh(token_data):
-    data = urllib.parse.urlencode({
-        'client_id': CLIENT_ID,
+    data_dict = {
         'grant_type': 'refresh_token',
         'refresh_token': token_data['refresh_token'],
-    }).encode()
+    }
+    
+    # If we have client_secret, use Basic Authentication
+    if CLIENT_SECRET:
+        data_dict['client_id'] = CLIENT_ID
+    
+    data = urllib.parse.urlencode(data_dict).encode()
+
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    
+    # Use Basic Authentication if client_secret is available
+    if CLIENT_SECRET:
+        credentials = base64.b64encode(f'{CLIENT_ID}:{CLIENT_SECRET}'.encode()).decode()
+        headers['Authorization'] = f'Basic {credentials}'
+    else:
+        # Fallback: include client_id in body for public clients
+        data = urllib.parse.urlencode({
+            'client_id': CLIENT_ID,
+            'grant_type': 'refresh_token',
+            'refresh_token': token_data['refresh_token'],
+        }).encode()
 
     req = urllib.request.Request(
         'https://accounts.spotify.com/api/token',
         data=data,
-        headers={'Content-Type': 'application/x-www-form-urlencoded'},
+        headers=headers,
     )
-    with urllib.request.urlopen(req) as resp:
-        new_data = json.loads(resp.read())
+    
+    try:
+        with urllib.request.urlopen(req) as resp:
+            new_data = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode()
+        print(f'Error refreshing token (HTTP {e.code}): {error_body}', file=sys.stderr)
+        raise
 
     if 'refresh_token' not in new_data:
         new_data['refresh_token'] = token_data['refresh_token']
@@ -153,7 +198,11 @@ def get_access_token():
             print('Error: SPOTIFY_REFRESH_TOKEN env var not set.')
             sys.exit(1)
         token_data = {'refresh_token': rt}
-        return refresh(token_data)
+        try:
+            return refresh(token_data)
+        except Exception as e:
+            print(f'Error: Failed to refresh token in CI mode. Check SPOTIFY_REFRESH_TOKEN and SPOTIFY_CLIENT_SECRET env vars.', file=sys.stderr)
+            sys.exit(1)
 
     token_data = load_token()
     if token_data and 'refresh_token' in token_data:

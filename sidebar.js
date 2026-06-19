@@ -4,13 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     sparkleScript.src = "sparkle.js";
     document.head.appendChild(sparkleScript);
 
-    const page = location.pathname.split("/").pop() || "index.html";
+    const page = location.pathname.split("/").pop() || "spotify.html";
     const links = [
-        ["index.html", "Blog"],
         ["spotify.html", "Spotify Stats"],
-        ["wfh-tracker.html", "WFH Tracker"],
         ["books.html", "Books"],
-        ["projects.html", "Projects"],
         
     ];
 
@@ -26,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <img src="photos/fishies.jpg" alt="Avatar" class="avatar">
             <div class="sidebar-card">
                 <p class="description">go placidly.</p>
-                <p class="welcome">Hi, this is my personal site or blog. Its in progress..</p>
+                <p class="welcome">Hi, this is my personal site and its in progress</p>
                 <nav>
                 ${nav}
                 </nav>

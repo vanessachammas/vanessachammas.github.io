@@ -22,6 +22,7 @@ jobs:
         env:
           CI: 'true'
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         run: python3 export-spotify.py
 
       - name: Commit and push if changed
