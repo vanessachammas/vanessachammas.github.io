@@ -1,11 +1,7 @@
 {
-  "updated": "2026-04-14T13:16:45Z",
+  "updated": "2026-06-19T19:42:08Z",
   "top_artists": {
     "short_term": [
-      {
-        "name": "Justin Bieber",
-        "image": "https://i.scdn.co/image/ab6761610000f178af20f7db5288bce9beede034"
-      },
       {
         "name": "Tame Impala",
         "image": "https://i.scdn.co/image/ab6761610000f178e412a782245eb20d9626c601"
@@ -15,32 +11,36 @@
         "image": "https://i.scdn.co/image/ab6761610000f178b99cacf8acd5378206767261"
       },
       {
-        "name": "Blood Orange",
-        "image": "https://i.scdn.co/image/ab6761610000f17882a833d61eafc09c05c24882"
-      },
-      {
-        "name": "Taylor Swift",
-        "image": "https://i.scdn.co/image/ab6761610000f178e2e8e7ff002a4afda1c7147e"
-      },
-      {
-        "name": "The Neighbourhood",
-        "image": "https://i.scdn.co/image/ab6761610000f178df0b5ac84376a0a4b2166816"
-      },
-      {
         "name": "The Strokes",
         "image": "https://i.scdn.co/image/ab6761610000f178c3b137793230f4043feb0089"
       },
       {
-        "name": "070 Shake",
-        "image": "https://i.scdn.co/image/ab6761610000f1786338990250f5d5a447650ba9"
+        "name": "Gorillaz",
+        "image": "https://i.scdn.co/image/ab6761610000f178dd5b57b40cf2aaeccd07835e"
+      },
+      {
+        "name": "John Summit",
+        "image": "https://i.scdn.co/image/ab6761610000f17820662b32f3dbabad755dfb53"
+      },
+      {
+        "name": "Empire Of The Sun",
+        "image": "https://i.scdn.co/image/ab6761610000f178c806f3e714afa21861e20248"
+      },
+      {
+        "name": "Lizzy McAlpine",
+        "image": "https://i.scdn.co/image/ab6761610000f178912df0c93a5dc290d3c8816e"
+      },
+      {
+        "name": "Fred again..",
+        "image": "https://i.scdn.co/image/ab6761610000f17801b452c9ac75fbf1ae1e5256"
       },
       {
         "name": "Coldplay",
         "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
       },
       {
-        "name": "Foster The People",
-        "image": "https://i.scdn.co/image/ab6761610000f17822b8e662f0cfdddac8ab22bb"
+        "name": "Frank Ocean",
+        "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
       }
     ],
     "medium_term": [
@@ -53,74 +53,74 @@
         "image": "https://i.scdn.co/image/ab6761610000f178b99cacf8acd5378206767261"
       },
       {
+        "name": "Lizzy McAlpine",
+        "image": "https://i.scdn.co/image/ab6761610000f178912df0c93a5dc290d3c8816e"
+      },
+      {
         "name": "Justin Bieber",
         "image": "https://i.scdn.co/image/ab6761610000f178af20f7db5288bce9beede034"
       },
       {
-        "name": "Fred again..",
-        "image": "https://i.scdn.co/image/ab6761610000f178381c41adc678e4ce864eb274"
+        "name": "The Strokes",
+        "image": "https://i.scdn.co/image/ab6761610000f178c3b137793230f4043feb0089"
       },
       {
         "name": "Blood Orange",
         "image": "https://i.scdn.co/image/ab6761610000f17882a833d61eafc09c05c24882"
       },
       {
-        "name": "The Strokes",
-        "image": "https://i.scdn.co/image/ab6761610000f178c3b137793230f4043feb0089"
+        "name": "Coldplay",
+        "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
       },
       {
-        "name": "Charli xcx",
-        "image": "https://i.scdn.co/image/ab6761610000f178daa727dd396963ba92dd6377"
+        "name": "Gorillaz",
+        "image": "https://i.scdn.co/image/ab6761610000f178dd5b57b40cf2aaeccd07835e"
       },
       {
         "name": "070 Shake",
         "image": "https://i.scdn.co/image/ab6761610000f1786338990250f5d5a447650ba9"
       },
       {
-        "name": "Coldplay",
-        "image": "https://i.scdn.co/image/ab6761610000f1781ba8fc5f5c73e7e9313cc6eb"
-      },
-      {
-        "name": "Drake",
-        "image": "https://i.scdn.co/image/ab6761610000f1784293385d324db8558179afd9"
+        "name": "Taylor Swift",
+        "image": "https://i.scdn.co/image/ab6761610000f178e2e8e7ff002a4afda1c7147e"
       }
     ],
     "long_term": [
-      {
-        "name": "Tame Impala",
-        "image": "https://i.scdn.co/image/ab6761610000f178e412a782245eb20d9626c601"
-      },
       {
         "name": "Lana Del Rey",
         "image": "https://i.scdn.co/image/ab6761610000f178b99cacf8acd5378206767261"
       },
       {
-        "name": "070 Shake",
-        "image": "https://i.scdn.co/image/ab6761610000f1786338990250f5d5a447650ba9"
+        "name": "Tame Impala",
+        "image": "https://i.scdn.co/image/ab6761610000f178e412a782245eb20d9626c601"
       },
       {
         "name": "The Strokes",
         "image": "https://i.scdn.co/image/ab6761610000f178c3b137793230f4043feb0089"
       },
       {
-        "name": "Drake",
-        "image": "https://i.scdn.co/image/ab6761610000f1784293385d324db8558179afd9"
-      },
-      {
-        "name": "The Kooks",
-        "image": "https://i.scdn.co/image/ab6761610000f178db445115fc89f2ede86dab8a"
+        "name": "070 Shake",
+        "image": "https://i.scdn.co/image/ab6761610000f1786338990250f5d5a447650ba9"
       },
       {
         "name": "Weston Estate",
         "image": "https://i.scdn.co/image/ab6761610000f178f49ff1ff97d91c96c9fb2323"
       },
       {
+        "name": "Drake",
+        "image": "https://i.scdn.co/image/ab6761610000f1784293385d324db8558179afd9"
+      },
+      {
         "name": "Justin Bieber",
         "image": "https://i.scdn.co/image/ab6761610000f178af20f7db5288bce9beede034"
       },
       {
-        "name": "Khalid",
-        "image": "https://i.scdn.co/image/ab6761610000f1788f77c3eddc1869e9542b04bc"
+        "name": "The Kooks",
+        "image": "https://i.scdn.co/image/ab6761610000f178db445115fc89f2ede86dab8a"
+      },
+      {
+        "name": "Frank Ocean",
+        "image": "https://i.scdn.co/image/ab6761610000f178ee3123e593174208f9754fab"
       },
       {
         "name": "Justice",
@@ -131,24 +131,39 @@
   "top_tracks": {
     "short_term": [
       {
-        "name": "Tonight",
-        "artists": "girlsweetvoiced",
-        "image": "https://i.scdn.co/image/ab67616d000048518a949f897c38a9f170fa2814"
+        "name": "HONEYMOON",
+        "artists": "Jo Hill",
+        "image": "https://i.scdn.co/image/ab67616d000048517048260bf5e58a5aae00e03d"
       },
       {
-        "name": "The Hand",
-        "artists": "Annabelle Dinda",
-        "image": "https://i.scdn.co/image/ab67616d00004851d3edfd84ef7407413495aeaf"
+        "name": "I Just Don't Know You Yet - Live",
+        "artists": "Absolutely",
+        "image": "https://i.scdn.co/image/ab67616d00004851af1d8f2d95893fc173279cf9"
       },
       {
-        "name": "Haircut - From \"Mulan\"/Score",
-        "artists": "Jerry Goldsmith",
-        "image": "https://i.scdn.co/image/ab67616d00004851d647cc15dab68402fcd5f91d"
+        "name": "Soccer Practice",
+        "artists": "Lizzy McAlpine",
+        "image": "https://i.scdn.co/image/ab67616d00004851ae8516f025f800e78b875d44"
       },
       {
-        "name": "Time To Pretend",
-        "artists": "MGMT",
-        "image": "https://i.scdn.co/image/ab67616d000048517addf1f64798c10d3bd6b27c"
+        "name": "DON'T BELIEVE IT",
+        "artists": "John Summit, Absolutely",
+        "image": "https://i.scdn.co/image/ab67616d00004851edd455c68b4f20c12a76c8c6"
+      },
+      {
+        "name": "Tamally Maak",
+        "artists": "Amr Diab",
+        "image": "https://i.scdn.co/image/ab67616d000048512a37edda69e67266f05a9753"
+      },
+      {
+        "name": "Closer",
+        "artists": "Ne-Yo",
+        "image": "https://i.scdn.co/image/ab67616d0000485128406f09147cd51d3b882518"
+      },
+      {
+        "name": "Die On This Hill",
+        "artists": "SIENNA SPIRO",
+        "image": "https://i.scdn.co/image/ab67616d000048510901e50bfaff4351a29f462b"
       },
       {
         "name": "We Don't Talk Anymore (feat. Selena Gomez)",
@@ -156,29 +171,14 @@
         "image": "https://i.scdn.co/image/ab67616d0000485115145482a542a9adb282250b"
       },
       {
-        "name": "Begin Again",
-        "artists": "Taylor Swift",
-        "image": "https://i.scdn.co/image/ab67616d0000485196384c98ac4f3e7c2440f5b5"
+        "name": "It's Gonna Be Me",
+        "artists": "*NSYNC",
+        "image": "https://i.scdn.co/image/ab67616d00004851a6cb8fab778e1efc406a5909"
       },
       {
-        "name": "Thinking Of You",
-        "artists": "Katy Perry",
-        "image": "https://i.scdn.co/image/ab67616d0000485131cc26681b0164332fa26634"
-      },
-      {
-        "name": "FE!N (feat. Playboi Carti)",
-        "artists": "Travis Scott, Playboi Carti",
-        "image": "https://i.scdn.co/image/ab67616d0000485104481c826dd292e5e4983b3f"
-      },
-      {
-        "name": "Jesus Freak Lighter",
-        "artists": "Blood Orange",
-        "image": "https://i.scdn.co/image/ab67616d00004851a57614c31da9d22c4a5a082d"
-      },
-      {
-        "name": "That Should Be Me",
-        "artists": "Justin Bieber",
-        "image": "https://i.scdn.co/image/ab67616d00004851629dc9e2e3bc20bbd7d92e4a"
+        "name": "Human Nature",
+        "artists": "Michael Jackson",
+        "image": "https://i.scdn.co/image/ab67616d0000485132a7d87248d1b75463483df5"
       }
     ],
     "medium_term": [
@@ -188,49 +188,49 @@
         "image": "https://i.scdn.co/image/ab67616d000048518a949f897c38a9f170fa2814"
       },
       {
-        "name": "Dreamer",
-        "artists": "Ozzy Osbourne",
-        "image": "https://i.scdn.co/image/ab67616d000048516ab3121cb80e3d8da28f5b77"
-      },
-      {
-        "name": "Piece Of Heaven",
-        "artists": "Tame Impala",
-        "image": "https://i.scdn.co/image/ab67616d00004851208500450dcd0fd294d7bd3b"
-      },
-      {
         "name": "Haircut - From \"Mulan\"/Score",
         "artists": "Jerry Goldsmith",
         "image": "https://i.scdn.co/image/ab67616d00004851d647cc15dab68402fcd5f91d"
       },
       {
-        "name": "We Don't Talk Anymore (feat. Selena Gomez)",
-        "artists": "Charlie Puth, Selena Gomez",
-        "image": "https://i.scdn.co/image/ab67616d0000485115145482a542a9adb282250b"
+        "name": "HONEYMOON",
+        "artists": "Jo Hill",
+        "image": "https://i.scdn.co/image/ab67616d000048517048260bf5e58a5aae00e03d"
       },
       {
-        "name": "pressure",
-        "artists": "jigitz",
-        "image": "https://i.scdn.co/image/ab67616d000048513674b77c17e857669ff1dfbe"
-      },
-      {
-        "name": "Folded x Miss Independent",
-        "artists": "szxlie",
-        "image": "https://i.scdn.co/image/ab67616d0000485122cc44e721166f03014208a4"
-      },
-      {
-        "name": "PIXELATED KISSES",
-        "artists": "Joji",
-        "image": "https://i.scdn.co/image/ab67616d0000485104316985c2c333c86874dad3"
-      },
-      {
-        "name": "Sigue",
-        "artists": "Beny Jr, Morad, K y B",
-        "image": "https://i.scdn.co/image/ab67616d00004851eb63a2f7274a563b3895b5aa"
+        "name": "Soccer Practice",
+        "artists": "Lizzy McAlpine",
+        "image": "https://i.scdn.co/image/ab67616d00004851ae8516f025f800e78b875d44"
       },
       {
         "name": "The Hand",
         "artists": "Annabelle Dinda",
         "image": "https://i.scdn.co/image/ab67616d00004851d3edfd84ef7407413495aeaf"
+      },
+      {
+        "name": "Can't Leave Alone (feat. Avenoir & Maz B)",
+        "artists": "Pino, Avenoir, Maz B, 86",
+        "image": "https://i.scdn.co/image/ab67616d00004851cfe5c69e0a4ae129fb436739"
+      },
+      {
+        "name": "Fire In My Heart",
+        "artists": "Escape from New York",
+        "image": "https://i.scdn.co/image/ab67616d0000485175fd9ec7678af2ee912b4b66"
+      },
+      {
+        "name": "The Reason",
+        "artists": "Hoobastank",
+        "image": "https://i.scdn.co/image/ab67616d0000485194f8b5f85bad2c8affe6cc7d"
+      },
+      {
+        "name": "Swim Good",
+        "artists": "Frank Ocean",
+        "image": "https://i.scdn.co/image/ab67616d00004851ebbff7725d3ce0739be01787"
+      },
+      {
+        "name": "Die On This Hill",
+        "artists": "SIENNA SPIRO",
+        "image": "https://i.scdn.co/image/ab67616d000048510901e50bfaff4351a29f462b"
       }
     ],
     "long_term": [
@@ -245,14 +245,9 @@
         "image": "https://i.scdn.co/image/ab67616d0000485194f8b5f85bad2c8affe6cc7d"
       },
       {
-        "name": "How It Feels",
-        "artists": "Barry Can't Swim",
-        "image": "https://i.scdn.co/image/ab67616d0000485147941121dc059eb9412ca872"
-      },
-      {
-        "name": "BIRDS OF A FEATHER",
-        "artists": "Billie Eilish",
-        "image": "https://i.scdn.co/image/ab67616d0000485171d62ea7ea8a5be92d3c1f62"
+        "name": "Tulsa Jesus Freak",
+        "artists": "Lana Del Rey",
+        "image": "https://i.scdn.co/image/ab67616d00004851ca929c6e766cb8591a286e0d"
       },
       {
         "name": "Soft Spot",
@@ -260,9 +255,9 @@
         "image": "https://i.scdn.co/image/ab67616d00004851617997bc09bb7fa23624eff5"
       },
       {
-        "name": "Tulsa Jesus Freak",
-        "artists": "Lana Del Rey",
-        "image": "https://i.scdn.co/image/ab67616d00004851ca929c6e766cb8591a286e0d"
+        "name": "Tonight",
+        "artists": "girlsweetvoiced",
+        "image": "https://i.scdn.co/image/ab67616d000048518a949f897c38a9f170fa2814"
       },
       {
         "name": "Nothing Matters",
@@ -275,77 +270,82 @@
         "image": "https://i.scdn.co/image/ab67616d00004851cd3978ebe35d93a07249b97f"
       },
       {
+        "name": "We Don't Talk Anymore (feat. Selena Gomez)",
+        "artists": "Charlie Puth, Selena Gomez",
+        "image": "https://i.scdn.co/image/ab67616d000048514fe297c018e495a97662e5ac"
+      },
+      {
         "name": "Butterflies",
         "artists": "Kacey Musgraves",
         "image": "https://i.scdn.co/image/ab67616d000048512e35d25eb7288830d5540484"
       },
       {
-        "name": "We Don't Talk Anymore (feat. Selena Gomez)",
-        "artists": "Charlie Puth, Selena Gomez",
-        "image": "https://i.scdn.co/image/ab67616d000048514fe297c018e495a97662e5ac"
+        "name": "Chemtrails Over The Country Club",
+        "artists": "Lana Del Rey",
+        "image": "https://i.scdn.co/image/ab67616d00004851ca929c6e766cb8591a286e0d"
       }
     ]
   },
   "recent": [
     {
-      "name": "Intro",
-      "artists": "The xx",
-      "image": "https://i.scdn.co/image/ab67616d00004851a46d603701aa0342e8cca64e",
-      "played_at": "2026-04-14T07:39:55.771Z"
+      "name": "Don't Dream It's Over",
+      "artists": "Crowded House",
+      "image": "https://i.scdn.co/image/ab67616d000048513ce3e2272e25916844f10d86",
+      "played_at": "2026-06-19T19:28:06.600Z"
     },
     {
-      "name": "Intro",
-      "artists": "The xx",
-      "image": "https://i.scdn.co/image/ab67616d00004851a46d603701aa0342e8cca64e",
-      "played_at": "2026-04-14T07:37:47.796Z"
+      "name": "The Less I Know The Better",
+      "artists": "Tame Impala",
+      "image": "https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79",
+      "played_at": "2026-06-19T19:10:58.068Z"
     },
     {
-      "name": "Angel",
-      "artists": "Massive Attack, Horace Andy",
-      "image": "https://i.scdn.co/image/ab67616d000048512fcb0a3c7a66e516b11cd26e",
-      "played_at": "2026-04-14T07:31:37.747Z"
+      "name": "Beverly Laurel",
+      "artists": "Tame Impala",
+      "image": "https://i.scdn.co/image/ab67616d000048515efbb161bf5b66c862a6f5ae",
+      "played_at": "2026-06-19T19:03:29.502Z"
     },
     {
-      "name": "Escapism. - Sped Up",
-      "artists": "RAYE, 070 Shake",
-      "image": "https://i.scdn.co/image/ab67616d00004851e38f6d02f1e76fe09009e64e",
-      "played_at": "2026-04-14T03:08:07.067Z"
+      "name": "Love/Paranoia",
+      "artists": "Tame Impala",
+      "image": "https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79",
+      "played_at": "2026-06-19T18:55:50.714Z"
     },
     {
-      "name": "Don\u2019t Matter To Me (with Michael Jackson)",
-      "artists": "Drake, Michael Jackson",
-      "image": "https://i.scdn.co/image/ab67616d00004851f907de96b9a4fbc04accc0d5",
-      "played_at": "2026-04-14T03:04:06.672Z"
+      "name": "Yes I'm Changing",
+      "artists": "Tame Impala",
+      "image": "https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79",
+      "played_at": "2026-06-19T18:52:44.397Z"
     },
     {
-      "name": "Other People",
-      "artists": "Daniel Seavey",
-      "image": "https://i.scdn.co/image/ab67616d00004851ccd28623ec040b513ac45999",
-      "played_at": "2026-04-14T02:57:47.171Z"
+      "name": "Patience",
+      "artists": "Tame Impala",
+      "image": "https://i.scdn.co/image/ab67616d000048513daf1e477cbdcb84220b006a",
+      "played_at": "2026-06-19T18:48:13.239Z"
     },
     {
-      "name": "Viva La Vida",
-      "artists": "Coldplay",
-      "image": "https://i.scdn.co/image/ab67616d00004851e21cc1db05580b6f2d2a3b6e",
-      "played_at": "2026-04-14T02:53:48.285Z"
+      "name": "Booster Seat",
+      "artists": "Spacey Jane",
+      "image": "https://i.scdn.co/image/ab67616d00004851f4e16426b9de1ae437f588e7",
+      "played_at": "2026-06-19T18:43:20.355Z"
     },
     {
-      "name": "Fix You",
-      "artists": "Coldplay",
-      "image": "https://i.scdn.co/image/ab67616d000048514e0362c225863f6ae2432651",
-      "played_at": "2026-04-14T02:49:44.568Z"
+      "name": "Humbug Mountain Song",
+      "artists": "Fruit Bats",
+      "image": "https://i.scdn.co/image/ab67616d00004851e1101c867f96b1ad292b76f0",
+      "played_at": "2026-06-19T18:38:51.009Z"
     },
     {
-      "name": "The Scientist",
-      "artists": "Coldplay",
-      "image": "https://i.scdn.co/image/ab67616d00004851de09e02aa7febf30b7c02d82",
-      "played_at": "2026-04-14T02:44:50.033Z"
+      "name": "DON'T BELIEVE IT",
+      "artists": "John Summit, Absolutely",
+      "image": "https://i.scdn.co/image/ab67616d00004851edd455c68b4f20c12a76c8c6",
+      "played_at": "2026-06-19T18:33:52.580Z"
     },
     {
-      "name": "Time to Pretend",
-      "artists": "MGMT",
-      "image": "https://i.scdn.co/image/ab67616d000048518b32b139981e79f2ebe005eb",
-      "played_at": "2026-04-14T02:08:29.472Z"
+      "name": "ALL THE TIME",
+      "artists": "John Summit, The Chainsmokers, Ilsey",
+      "image": "https://i.scdn.co/image/ab67616d00004851edd455c68b4f20c12a76c8c6",
+      "played_at": "2026-06-19T15:35:54.480Z"
     }
   ]
 }
